@@ -1,7 +1,7 @@
 import { setUserMenuBtn, localLoginChecker } from "./userMenu.js";
 
 //axios prepare data
-const baseUrl = "http://localhost:3000";
+const baseUrl = "https://json-server-vercel-main.vercel.app";
 let mapData = [];
 
 init();

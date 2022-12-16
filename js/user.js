@@ -48,7 +48,7 @@ signinBtn.addEventListener("click", (e) => {
 });
 
 // 1-2. signup function
-const baseUrl = "http://localhost:3000";
+const baseUrl = "https://json-server-vercel-main.vercel.app";
 function callSignUp() {
   let email = signupAccount.value;
   let password = signupPassword.value;

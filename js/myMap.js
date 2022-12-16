@@ -9,7 +9,7 @@ if (!userId) {
 }
 
 // 1. axios prepare data
-const baseUrl = "http://localhost:3000";
+const baseUrl = "https://json-server-vercel-main.vercel.app";
 
 init();
 function init() {

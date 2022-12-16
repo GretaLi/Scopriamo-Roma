@@ -10,7 +10,7 @@ let userId = parseInt(localStorage.getItem("userId"));
 let userName = localStorage.getItem("userName");
 let avatar = localStorage.getItem("avatar");
 
-const baseUrl = "http://localhost:3000";
+const baseUrl = "https://json-server-vercel-main.vercel.app";
 
 const sliderArr = [];
 

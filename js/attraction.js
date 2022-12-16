@@ -25,14 +25,13 @@ function eventListener() {
 }
 
 // 2. axios prepare data
-const baseUrl = "http://localhost:3000";
+const baseUrl = "https://json-server-vercel-main.vercel.app";
 let data = [];
 
+setUserMenuBtn();
+localLoginChecker();
 init();
 function init() {
-  setUserMenuBtn();
-  localLoginChecker();
-
   axios
     .get(`${baseUrl}/attractions?_embed=bookmarks`)
     .then(function (response) {
@@ -236,6 +235,7 @@ function executeBookmark(attractionId, bookmarkId) {
       )
       .then((response) => {
         console.log(response);
+        init();
       })
       .catch((error) => {
         console.log(error);
@@ -252,6 +252,7 @@ function executeBookmark(attractionId, bookmarkId) {
       })
       .then((response) => {
         console.log(response);
+        init();
       })
       .catch((error) => {
         console.log(error);
