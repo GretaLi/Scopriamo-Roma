@@ -10,7 +10,7 @@ let userId = parseInt(localStorage.getItem("userId"));
 let userName = localStorage.getItem("userName");
 let avatar = localStorage.getItem("avatar");
 
-const baseUrl = "https://json-server-vercel-main-7wwq5qqbi-gretali.vercel.app";
+const baseUrl = "https://json-server-vercel-main-jwuxb2h7m-gretali.vercel.app";
 
 const sliderArr = [];
 

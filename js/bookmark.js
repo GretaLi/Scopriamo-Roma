@@ -17,7 +17,7 @@ const searchForm = document.querySelector("#search-form");
 // 1. handler
 
 // 2. axios prepare data
-const baseUrl = "https://json-server-vercel-main-7wwq5qqbi-gretali.vercel.app";
+const baseUrl = "https://json-server-vercel-main-jwuxb2h7m-gretali.vercel.app";
 let data = [];
 
 init();
