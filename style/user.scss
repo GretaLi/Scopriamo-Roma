@@ -1,0 +1,231 @@
+@import "reset";
+@import "mixin";
+@import "base";
+@import "layout";
+@import "component";
+@import "navigation";
+
+// user
+body.signin-page {
+  position: relative;
+  height: 100%;
+  min-height: 100vh;
+  main {
+    padding: 0;
+  }
+
+  .logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    a {
+      background: hsl(var(--clr-secondary), 0.8);
+    }
+    small {
+      font-weight: 500;
+      color: hsla(var(--clr-dark), 0.9);
+      text-shadow: none;
+    }
+  }
+}
+
+.user {
+  min-height: 100vh;
+  height: 100%;
+  background: hsl(var(--clr-veryDark));
+  background: hsl(var(--clr-primary));
+  display: flex;
+  align-content: center;
+  justify-content: center;
+
+  a {
+    color: hsl(var(--clr-accent));
+    text-decoration: none;
+  }
+
+  h2 {
+    font-size: var(--fs-600);
+    font-weight: var(--fw-med);
+  }
+
+  .user-bg {
+    display: block;
+    position: relative;
+    .noise {
+      display: none;
+    }
+    @include lg {
+      display: block;
+      width: 50%;
+      opacity: 0.8;
+      background: url(../img/bg.png);
+      background-position: center;
+      background-size: cover;
+
+      .noise {
+        display: block;
+      }
+    }
+  }
+
+  .user-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 24em;
+    padding: 5em 2em;
+  }
+  .signin {
+    display: none;
+  }
+  .panel {
+    max-width: 28em;
+    width: 100%;
+    display: flex;
+    gap: 2em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: clamp(2em, 8vh, 3em);
+    padding-bottom: clamp(2em, 8vh, 3em);
+    padding-left: clamp(1em, 6vh, 3em);
+    padding-right: clamp(1em, 6vh, 3em);
+    margin-bottom: 1em;
+    border: 1px solid hsl(var(--clr-accent));
+    border-radius: 10px;
+    background: hsl(var(--clr-light), 0.1);
+    color: hsl(var(--clr-very));
+    backdrop-filter: blur(4px);
+    font-size: var(--fs-300);
+  }
+
+  .signin .panel {
+    border-color: hsl(var(--clr-light));
+  }
+
+  .signup p:last-child,
+  .signin p:last-child {
+    text-align: center;
+  }
+
+  .input-group {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+    margin: 1em 0;
+  }
+
+  label {
+    position: absolute;
+    color: black;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    font-size: var(--fs-300);
+    transition: all 0.3s ease;
+  }
+  .input-group:has(input:focus) label,
+  label.float {
+    top: -40%;
+    left: 0%;
+    color: hsl(var(--clr-secondary));
+  }
+  input[type="email"],
+  input[type="password"],
+  input[type="text"] {
+    padding: 0.75em;
+    border-radius: 5px;
+    border: none;
+    background: hsl(var(--clr-secondary));
+    font-size: 1rem;
+  }
+
+  input[type="submit"] {
+    padding: 0.75em 2em;
+    margin-bottom: 0;
+    background: hsl(var(--clr-accent));
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: var(--fw-semi);
+    cursor: pointer;
+  }
+
+  input[type="submit"]:active {
+    transform: scale(0.98);
+  }
+
+  input[type="email"]:focus,
+  input[type="password"]:focus,
+  input[type="text"]:focus,
+  .signup input[type="submit"]:active,
+  .signup input[type="submit"]:focus {
+    outline: 3px solid hsl(var(--clr-accent), 0.2);
+  }
+
+  .signin input[type="submit"] {
+    background: hsl(var(--clr-light));
+    color: hsl(var(--clr-accent));
+  }
+
+  .signin input[type="submit"]:active,
+  .signin input[type="submit"]:focus {
+    outline: 3px solid hsl(var(--clr-accent), 0.2);
+  }
+
+  .signup-msg,
+  .signin-msg {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    bottom: -1.5em;
+    color: hsl(var(--clr-accent));
+    font-weight: 400;
+    font-size: 0.8em;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+.policy {
+  position: absolute;
+  text-align: center;
+  bottom: 0.5em;
+  left: 0;
+  right: 0;
+  width: 100%;
+  a {
+    opacity: 0.4;
+    font-size: var(--fs-200);
+  }
+  @include lg {
+    left: 50%;
+    width: 50%;
+  }
+}
+
+.noise {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+  opacity: 0.06;
+}

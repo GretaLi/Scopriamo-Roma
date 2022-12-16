@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>藝起逛羅馬 | 會員資料</title>
+    <!-- Google Icon -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+
+    <link rel="stylesheet" href="../style/profile.css" />
+
+    <!-- Axios.js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+      defer
+    ></script>
+    <!-- Fontawsome -->
+    <script
+      src="https://kit.fontawesome.com/4925ccd0b3.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Sweet alert.js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.15/dist/sweetalert2.all.min.js"
+      defer
+    ></script>
+    <script type="module" src="../js/profile.js" defer></script>
+  </head>
+  <body class="profile-page">
+    <header id="primary-header" class="primary-header">
+      <nav class="topmenu" id="navbar-el">
+        <ul class="topmenu__inner">
+          <li class="item">
+            <a href="./city.html"><span>探索</span>城市</a>
+          </li>
+          <li class="item">
+            <a class="active" href="./attraction.html"><span>探索</span>景點</a>
+          </li>
+          <li class="item">
+            <a href="./bookmark.html"><span>規劃</span>行程</a>
+          </li>
+          <li id="user-menu" class="item user-menu">
+            <a id="signup-btn" href="./signin.html?register=true">註冊</a>
+            <a id="signin-btn" href="./signin.html">登入</a>
+          </li>
+        </ul>
+      </nav>
+      <!-- 左側選單 -->
+      <button id="sidemenu-toggle" class="sidemenu-toggle" aria-label="toggle">
+        <span class="hamburger"></span>
+      </button>
+      <div id="sidebar-el" class="sidebar">
+        <h1 class="logo logo-s">
+          <a href="index.html"
+            ><em>藝起<br />逛羅馬</em></a
+          >
+        </h1>
+      </div>
+      <div id="sidemenu-el" class="sidemenu">
+        <ul class="sidemenu__inner">
+          <li class="item">
+            <a class="link" href="./bookmark.html">我的收藏</a>
+          </li>
+          <li class="item">
+            <a class="link active" href="./myMap.html">我的地圖</a>
+          </li>
+          <li class="item">
+            <a class="link">規劃行程</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <main id="main-el" class="profile">
+      <div class="container">
+        <section class="avatar">
+          <header class="profile__header">
+            <h2>個人資料照片</h2>
+          </header>
+          <form class="profile__form">
+            <div class="profile__form-img">
+              <img id="profile-avatar" src="" alt="avatar" />
+            </div>
+            <div class="profile__form-text">
+              <p>上傳個人照片</p>
+              <label for="myAvatar" class="btn btn-action">選擇檔案</label>
+              <input id="myAvatar" type="file" accept="image/png, image/jpeg" />
+              <p>
+                理想尺寸為 500 像素 x 500 像素<br />
+                最大文件大小為 5mb
+              </p>
+            </div>
+          </form>
+        </section>
+
+        <section class="name">
+          <header class="profile__header">
+            <h2>帳戶顯示名稱</h2>
+            <p>透過個性化名稱讓其他人更認識你</p>
+          </header>
+
+          <form class="profile__form">
+            <div class="input-group">
+              <label for="myName">顯示名稱</label>
+              <input type="text" name="myName" id="myName" />
+              <span class="profile__form-msg"></span>
+            </div>
+            <button id="myName-btn" type="submit" class="btn btn-action">
+              儲存名稱
+            </button>
+          </form>
+        </section>
+
+        <section class="password">
+          <header class="profile__header">
+            <h2>更新密碼</h2>
+            <p>請輸入目前密碼以及新密碼</p>
+          </header>
+          <form class="profile__form">
+            <div class="input-group">
+              <label for="myOldPassword">目前密碼</label>
+              <input type="password" name="myOldPassword" id="myOldPassword" />
+              <span class="profile__form-msg"></span>
+            </div>
+            <div class="input-group">
+              <label for="myNewPassword">新密碼</label>
+              <input type="password" name="myNewPassword" id="myNewPassword" />
+              <span class="profile__form-msg"></span>
+            </div>
+            <button id="myPassword-btn" type="submit" class="btn btn-action">
+              更新密碼
+            </button>
+          </form>
+        </section>
+
+        <section class="danger">
+          <header class="profile__header">
+            <h2>危險區</h2>
+            <p>刪除您的帳戶將清除關於您的所有信息、所收藏的景點以及行程規劃</p>
+          </header>
+          <form class="profile__form">
+            <button id="deleteAccount-btn" type="submit" class="btn btn-danger">
+              刪除帳戶
+            </button>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <script type="text/javascript">
+      // sidemanu
+      const sidemenuToggle = document.querySelector("#sidemenu-toggle");
+      const mainEl = document.querySelector("#main-el");
+      const sidemenuEl = document.querySelector("#sidemenu-el");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 0) {
+          document.querySelector("#primary-header").classList.add("scrollDown");
+        } else {
+          document
+            .querySelector("#primary-header")
+            .classList.remove("scrollDown");
+        }
+      });
+
+      sidemenuToggle.addEventListener("click", () => {
+        document.body.classList.toggle("sidemenu-open");
+      });
+
+      mainEl.addEventListener("click", () => {
+        if (document.body.classList.contains("sidemenu-open")) {
+          document.body.classList.remove("sidemenu-open");
+        }
+      });
+
+      sidemenuEl.addEventListener("click", (e) => {
+        let target = e.target;
+        if (target.classList.contains("dropdown-toggle")) {
+          target.classList.toggle("dropdown-open");
+
+          const sidemenuItems = target.nextElementSibling.children;
+          if (target.classList.contains("dropdown-open")) {
+            for (let i = 0; i < sidemenuItems.length; i++) {
+              setTimeout(() => {
+                sidemenuItems[i].classList.add("open");
+              }, 0 + i * 150);
+            }
+          } else {
+            for (let item of sidemenuItems) {
+              item.classList.remove("open");
+            }
+          }
+        }
+      });
+
+      // labels floating
+      const inputs = document.querySelectorAll("input");
+      inputs.forEach((input) => {
+        input.addEventListener("keydown", () => {
+          const label = input.parentElement.firstElementChild;
+          if (!input.value) {
+            label.classList.remove("float");
+            return;
+          }
+          label.classList.add("float");
+          input.nextElementSibling.textContent = "";
+        });
+      });
+    </script>
+  </body>
+</html>

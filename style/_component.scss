@@ -1,0 +1,209 @@
+/* ------------- */
+/* General Style */
+/* ------------- */
+
+// title
+
+.section-title {
+  position: relative;
+  font-size: var(--fs-600);
+  font-family: var(--ff-serif);
+  font-weight: var(--fw-semi);
+  margin-bottom: 1em;
+  color: hsl(var(--clr-light));
+  padding-left: 16px;
+  padding-bottom: 4px;
+  border-left: 1px solid hsl(var(--clr-accent), 0.8);
+  &::after,
+  &::before {
+    position: absolute;
+    content: "";
+    background: hsl(var(--clr-accent), 0.8);
+  }
+  &::after {
+    top: 0;
+    left: -8px;
+    width: 4px;
+    height: 100%;
+  }
+  &::before {
+    bottom: 0;
+    left: 0;
+    width: 8ch;
+    width: 50%;
+    height: 1px;
+    transition: width 0.8s ease;
+  }
+  span {
+    font-weight: normal;
+    margin-left: 0.5em;
+    font-family: var(--ff-bellefair);
+    text-transform: uppercase;
+    color: hsl(var(--clr-light), 0.5);
+    transition: color 0.8s ease;
+  }
+}
+section:hover {
+  .section-title::before {
+    width: 100%;
+  }
+  .section-title span {
+    color: hsl(var(--clr-accent), 5);
+  }
+}
+
+// tags
+.tags {
+  display: flex;
+  gap: 1em;
+  font-size: var(--fs-200);
+  .tag {
+    padding: 0.25em 0.5em;
+    border-radius: 4px;
+    background: hsl(var(--clr-accent));
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
+
+// tabs
+.tabs {
+  display: flex;
+  font-size: var(--fs-500);
+  border-bottom: 1px solid hsl(var(--clr-secondary));
+}
+.tab {
+  width: 100%;
+  padding-bottom: 0.25em;
+  text-align: center;
+  color: hsl(var(--clr-secondary), 0.25);
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: hsl(var(--clr-secondary));
+  }
+}
+.tab.active {
+  position: relative;
+  color: hsl(var(--clr-light));
+}
+.tab.active::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -2px 0;
+  height: 3px;
+  width: 100%;
+  background: hsl(var(--clr-accent));
+}
+
+.tab-panel {
+  min-height: 470px;
+  display: none;
+  padding: 2em 3em;
+  white-space: break-spaces;
+}
+.tab-panel.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+// btns
+.btn-container {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  gap: 1em;
+}
+
+.btn {
+  display: block;
+  line-height: 1;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 0.5em 1em;
+  text-align: center;
+  border-radius: var(--br-s);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  font-size: var(--fs-400);
+  cursor: pointer;
+}
+
+.btn-dark {
+  background: hsl(var(--clr-dark));
+  color: hsl(var(--clr-secondary));
+  &:hover {
+    background: hsl(var(--clr-dark), 0.8);
+  }
+  &:focus {
+    box-shadow: 0 0 0 3px hsl(var(--clr-dark), 0.5) !important;
+  }
+}
+
+.btn-action {
+  background: hsl(var(--clr-accent));
+  color: hsl(var(--clr-secondary));
+  &:hover {
+    border-color: hsl(var(--clr-accent));
+    background: hsl(var(--clr-secondary), 0.1);
+  }
+}
+.btn-cancel {
+  background: hsl(var(--clr-light));
+  color: hsl(var(--clr-dark));
+  font-weight: var(--fw-semi);
+  &:hover {
+    background: hsl(var(--clr-secondary));
+  }
+}
+
+.btn-danger {
+  color: hsl(var(--clr-secondary));
+  background: hsl(var(--clr-danger)) !important;
+  &:hover {
+    background: hsl(var(--clr-danger), 0.95) !important;
+  }
+  &:focus {
+    box-shadow: 0 0 0 3px hsl(var(--clr-danger), 0.5) !important;
+  }
+}
+
+.btn-link {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25em;
+  font-size: var(--fs-300);
+  border: 1px solid;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+
+  .material-symbols-outlined {
+    font-size: 1.5em;
+    font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 20;
+  }
+  &:hover {
+    background: hsl(var(--clr-secondary), 0.1);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fw-med {
+  font-weight: var(--fw-med) !important;
+}

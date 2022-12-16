@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>藝起逛羅馬 | 義大利旅遊中文資訊網</title>
+    <script
+      src="https://kit.fontawesome.com/4925ccd0b3.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="../style/index.css" />
+
+    <!-- Swiper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <!-- tilt.js -->
+    <script src="../js/vanilla-tilt.js" defer></script>
+    <!-- GSAP -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/TextPlugin.min.js"
+      defer
+    ></script>
+    <script type="module" src="../js/index.js" defer></script>
+  </head>
+  <body class="index">
+    <header id="primary-header" class="primary-header">
+      <nav class="topmenu" id="top-nav">
+        <h1 class="logo">
+          <a href="#"
+            ><em><span>藝起</span>逛羅馬</em
+            ><small><span>義大利旅遊</span>中文資訊網</small></a
+          >
+        </h1>
+        <ul class="topmenu__inner">
+          <li class="item">
+            <a href="./city.html"><span>探索</span>城市</a>
+          </li>
+          <li class="item">
+            <a href="./attraction.html"><span>探索</span>景點</a>
+          </li>
+          <li class="item">
+            <a href="./bookmark.html"><span>規劃</span>行程</a>
+          </li>
+          <li id="user-menu" class="item user-menu">
+            <a id="signup-btn" href="./signin.html?register=true">註冊</a>
+            <a id="signin-btn" href="./signin.html">登入</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="container">
+          <h2>從今天開始探索<span>文藝之都</span></h2>
+          <h2>PIAN PIANO SCOPRIAMO<span>ROMA</span></h2>
+          <p>羅馬</p>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <!-- Swiper -->
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="../img/hero_1.jpg" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="../img/hero_2.jpg" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="../img/hero_3.jpg" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="../img/hero_4.jpg" alt="" />
+            </div>
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+          <!-- hero deco -->
+          <canvas id="noise1" class="noise"></canvas>
+          <div class="vignette">
+            <!-- <span>羅馬</span> -->
+          </div>
+        </div>
+      </section>
+      <section class="intro">
+        <p>
+          Pian piano 義大利文慢慢來的意思<br />羅馬有豐富的文化遺產等著我們深度探索<br />
+          放慢腳步體驗當下 每個轉角都是博物館
+        </p>
+      </section>
+      <section class="explore">
+        <canvas id="noise2" class="noise"></canvas>
+        <div class="container">
+          <h2 class="title">探索羅馬</h2>
+          <div class="explore__card-wrapper">
+            <div class="explore__card-item card-item1">
+              <img src="../img/icon_map.svg" alt="icon map" />
+              <h3>地圖探索</h3>
+              <p>
+                使用地圖工具發掘相鄰景點<br />
+                更進一步了解羅馬古城區<br />
+                透過互動地圖探索每個區域
+              </p>
+            </div>
+            <div class="explore__card-item card-item2">
+              <img src="../img/icon_compass.svg" alt="icon compass" />
+              <h3>旅遊指南</h3>
+              <p>
+                提供羅馬大眾運輸全攻略<br />
+                羅馬地鐵/火車/公車/電車<br />
+                博物館及旅遊套票資訊通
+              </p>
+            </div>
+            <div class="explore__card-item card-item3">
+              <img
+                src="../img/icon_classical-knowledge.svg"
+                alt="icon classical-knowledge"
+              />
+              <h3>景點資訊</h3>
+              <p>
+                不論熱門或冷門景點全都有<br />
+                一手掌握景點參觀資訊及導覽<br />
+                讓旅遊不再走馬看花
+              </p>
+            </div>
+            <div class="explore__card-item card-item4">
+              <img src="../img/icon_schedule.svg" alt="icon schedule" />
+              <h3>行程規劃</h3>
+              <p>
+                收藏你所喜愛的景點<br />
+                在個人地圖中一目了然<br />
+                規劃鄰近景點並安排行程
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="loop">
+          <span>Pian piano Scopriamo Roma Pian piano Scopriamo Roma</span>
+          <span>Pian piano Scopriamo Roma Pian piano Scopriamo Roma</span>
+        </div>
+      </section>
+      <section class="virtual">
+        <div class="container">
+          <h2 class="title">虛擬導覽</h2>
+          <p>
+            沒有足夠的年假可以做深度旅遊嗎？先等等還不要辭職！<br />
+            我們結合 Google Map 街景服務<br />
+            一起探索美麗的文化之都 – 羅馬。
+          </p>
+
+          <div class="virtual__panel-container">
+            <a href="./details.html?id=16" class="virtual__panel panel-1">
+              <h3>聖母大教堂</h3></a
+            >
+            <a href="./details.html?id=9" class="virtual__panel panel-2">
+              <h3>古羅馬廣場</h3></a
+            >
+            <a href="./details.html?id=12" class="virtual__panel panel-3">
+              <h3>聖天使城堡</h3></a
+            >
+            <a href="./details.html?id=13" class="virtual__panel panel-4">
+              <h3>特萊維噴泉</h3></a
+            >
+            <a href="./details.html?id=14" class="virtual__panel panel-5">
+              <h3>聖彼得教堂</h3></a
+            >
+            <a href="./details.html?id=15" class="virtual__panel panel-6">
+              <h3>西班牙廣場</h3></a
+            >
+            <a href="./details.html?id=10" class="virtual__panel panel-7">
+              <h3>羅馬競技場</h3></a
+            >
+          </div>
+        </div>
+
+        <div class="loop">
+          <span>Roma non è stata costruita in un giorno</span>
+          <span>Roma non è stata costruita in un giorno</span>
+          <span>Roma non è stata costruita in un giorno</span>
+        </div>
+      </section>
+      <section class="top10">
+        <h2 class="title">人氣景點<span>TOP 10</span></h2>
+        <div class="top10__container">
+          <div class="top10__card-info">
+            <h3>
+              <span>Fontana <br />di Trevi</span>特萊維<br />噴泉
+            </h3>
+            <div class="tags">
+              <div id="top10-category" class="tag">中世紀及近代羅馬</div>
+              <div id="top10-period" class="tag">噴泉</div>
+            </div>
+          </div>
+          <div class="top10__card-cta">
+            <a id="top10-link" href="./details.html?id=13">EXLPORE</a>
+          </div>
+          <!-- top 1-5 -->
+          <div class="top10__card-container">
+            <div class="top10__card">
+              <!-- space holder -->
+            </div>
+            <div
+              class="top10__card"
+              data-category="廣場及噴泉"
+              data-subcategory="近代"
+              data-attraction-id="13"
+            >
+              <img class="card-img" src="../img/card_2.jpg" alt="" />
+              <div class="card-text">
+                <h3>
+                  <span>Fontana <br />di Trevi</span>特萊維<br />噴泉
+                </h3>
+              </div>
+            </div>
+            <div
+              class="top10__card"
+              data-category="聖殿及教堂"
+              data-subcategory="文藝復興"
+              data-attraction-id="14"
+            >
+              <img class="card-img" src="../img/card_3.jpg" alt="" />
+              <div class="card-text">
+                <h3>
+                  <span>Basilica <br />di San Pietro</span>聖彼得<br />大教堂
+                </h3>
+              </div>
+            </div>
+            <div
+              class="top10__card"
+              data-category="歷史遺跡"
+              data-subcategory="古羅馬"
+              data-attraction-id="9"
+            >
+              <img class="card-img" src="../img/card_4.jpg" alt="" />
+              <div class="card-text">
+                <h3>
+                  <span>Foro <br />Romano</span>古羅馬<br />廣場
+                </h3>
+              </div>
+            </div>
+            <div
+              class="top10__card"
+              data-category="歷史遺跡"
+              data-subcategory="古羅馬"
+              data-attraction-id="17"
+            >
+              <img class="card-img" src="../img/card_5.jpg" alt="" />
+              <div class="card-text">
+                <h3><span>Pantheon</span>萬神殿</h3>
+              </div>
+            </div>
+            <div
+              class="top10__card"
+              data-category="聖殿及教堂"
+              data-subcategory="文藝復興"
+              data-attraction-id="22"
+            >
+              <img class="card-img" src="../img/card_1.jpg" alt="" />
+              <div class="card-text">
+                <h3>
+                  <span>Chiesa di Sant'Ivo <br />alla Sapienza</span
+                  >羅馬智慧大學<br />聖依華堂
+                </h3>
+              </div>
+            </div>
+            <!-- top 6-10 -->
+            <div
+              class="top10__card"
+              data-category="博物館及美術館"
+              data-subcategory="現代"
+              data-attraction-id="18"
+            >
+              <img class="card-img" src="../img/card_6.jpg" alt="" />
+              <div class="card-text">
+                <h3>
+                  <span>Monumento Nazionale <br />a Vittorio Emanuele II</span
+                  >維托里亞諾<br />紀念館
+                </h3>
+              </div>
+            </div>
+            <div
+              class="top10__card"
+              data-category="歷史遺跡"
+              data-subcategory="古羅馬"
+              data-attraction-id="10"
+            >
+              <img class="card-img" src="../img/panel_7.jpg" alt="" />
+              <div class="card-text">
+                <h3><span>Colosseo</span>羅馬<br />競技場</h3>
+              </div>
+            </div>
+            <div
+              class="top10__card"
+              data-category="博物館及美術館"
+              data-subcategory="文藝復興"
+              data-attraction-id="19"
+            >
+              <img class="card-img" src="../img/card_8.jpg" alt="" />
+              <div class="card-text">
+                <h3>
+                  <span>Museo <br />Vaticano</span>梵諦岡<br />博物館
+                </h3>
+              </div>
+            </div>
+            <div
+              class="top10__card"
+              data-category="廣場及噴泉"
+              data-subcategory="近代"
+              data-attraction-id="15"
+            >
+              <img class="card-img" src="../img/panel_6.jpg" alt="" />
+              <div class="card-text">
+                <h3>
+                  <span>Piazza <br />di Spagna</span>西班牙<br />廣場
+                </h3>
+              </div>
+            </div>
+            <div
+              class="top10__card"
+              data-category="歷史遺跡"
+              data-subcategory="中世紀"
+              data-attraction-id="12"
+            >
+              <img class="card-img" src="../img/panel_3.jpg" alt="" />
+              <div class="card-text">
+                <h3>
+                  <span>Castel <br />Sant'Angelo</span>聖天使<br />城堡
+                </h3>
+              </div>
+            </div>
+            <div class="top10__card">
+              <!-- space holder -->
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="cta">
+        <div class="loop">
+          <span>Scopriamo di più</span>
+          <span>Scopriamo di più</span>
+          <span>Scopriamo di più</span>
+          <span>Scopriamo di più</span>
+          <span>Scopriamo di più</span>
+          <span>Scopriamo di più</span>
+          <span>Scopriamo di più</span>
+        </div>
+        <canvas id="noise3" class="noise"></canvas>
+        <div class="vignette"></div>
+        <div class="container">
+          <h2 class="title">加入會員</h2>
+          <p>收藏景點 規劃旅程</p>
+          <a class="cta__btn" href="./signin.html?register=true">SING UP</a>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer__inner container">
+        <div href="#" class="footer__logo">
+          <h1 class="logo logo-s">
+            <a href="#"
+              ><em>藝起<br />逛羅馬</em
+              ><small>義大利旅遊<br />中文資訊網</small></a
+            >
+          </h1>
+        </div>
+        <ul class="footer__menu">
+          <li class="footer__menu-title">
+            探索城市
+            <ul>
+              <li><a href="./city.html">地圖探索</a></li>
+              <li><a href="./brief.html">羅馬簡介</a></li>
+              <li><a href="#">旅遊指南</a></li>
+            </ul>
+          </li>
+          <li class="footer__menu-title">
+            探索景點
+            <ul>
+              <li><a href="./details.html?category=歷史遺跡">歷史遺跡</a></li>
+              <li>
+                <a href="./details.html?category=博物館及美術館"
+                  >博物館及美術館</a
+                >
+              </li>
+              <li>
+                <a href="./details.html?category=別墅及公園">別墅及公園</a>
+              </li>
+              <li>
+                <a href="./details.html?category=廣場及噴泉">廣場及噴泉</a>
+              </li>
+              <li>
+                <a href="./details.html?category=聖殿及教堂">聖殿及教堂</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="footer__menu-title">
+            規劃行程
+            <ul>
+              <li><a href="./bookmark.html">我的收藏</a></li>
+              <li><a href="./myMap.html">我的地圖</a></li>
+              <li><a>規劃行程</a></li>
+            </ul>
+          </li>
+
+          <li class="footer__menu-title">
+            關於我們
+            <ul>
+              <li><a>聯絡方式</a></li>
+              <li><a>好站連結</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <p class="footer__copyright">
+        Copyright © 2022 | 藝起逛羅馬 · 義大利旅遊中文資訊網
+        <span>(此網站僅為練習使用，並無任何商業用途)</span>
+      </p>
+    </footer>
+
+    <script type="text/javascript">
+      // Initialize Swiper
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+        autoplay: {
+          delay: 3000,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          type: "progressbar",
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+
+      swiper.pagination.el.style.height = "5px";
+      swiper.pagination.el.style.width = "125px";
+    </script>
+  </body>
+</html>

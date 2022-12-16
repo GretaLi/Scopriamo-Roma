@@ -1,0 +1,28 @@
+/* ------------ */
+/*    Layout    */
+/* ------------ */
+
+// global
+
+main {
+  @include lg {
+    padding-left: 80px;
+  }
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 3em 2em;
+  max-width: 58.5em;
+  margin: 0 auto;
+  @include lg {
+  }
+
+  @include xl {
+  }
+
+  // @media (min-width: 1920px) {
+  //   max-width: 1920px;
+  // }
+}

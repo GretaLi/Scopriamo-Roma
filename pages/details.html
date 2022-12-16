@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>藝起逛羅馬 | 探索景點</title>
+    <!-- Google Icon -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <!-- leaflet.css -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="../style/details.css" />
+
+    <!-- Leaflet.js -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+      defer
+    ></script>
+
+    <!-- Swiper.js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+      defer
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/4925ccd0b3.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Sweet alert.js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.15/dist/sweetalert2.all.min.js"
+      defer
+    ></script>
+    <script type="module" src="../js/details.js" defer></script>
+  </head>
+  <body class="details-page">
+    <header id="primary-header" class="primary-header">
+      <nav class="topmenu" id="navbar-el">
+        <ul class="topmenu__inner">
+          <li class="item">
+            <a href="./city.html"><span>探索</span>城市</a>
+          </li>
+          <li class="item">
+            <a class="active" href="./attraction.html"><span>探索</span>景點</a>
+          </li>
+          <li class="item">
+            <a href="./bookmark.html"><span>規劃</span>行程</a>
+          </li>
+          <li id="user-menu" class="item user-menu">
+            <a id="signup-btn" href="./signin.html?register=true">註冊</a>
+            <a id="signin-btn" href="./signin.html">登入</a>
+          </li>
+        </ul>
+      </nav>
+      <!-- 左側選單 -->
+      <button id="sidemenu-toggle" class="sidemenu-toggle" aria-label="toggle">
+        <span class="hamburger"></span>
+      </button>
+      <div id="sidebar-el" class="sidebar">
+        <h1 class="logo logo-s">
+          <a href="index.html"
+            ><em>藝起<br />逛羅馬</em></a
+          >
+        </h1>
+      </div>
+      <div id="sidemenu-el" class="sidemenu">
+        <ul class="sidemenu__inner">
+          <li class="item">
+            <a class="link active" href="./attraction.html?category=歷史遺跡"
+              >歷史遺跡</a
+            >
+          </li>
+          <li class="item">
+            <a class="link" href="./attraction.html?category=博物館及美術館"
+              >博物館及美術館</a
+            >
+          </li>
+          <li class="item">
+            <a class="link" href="./attraction.html?category=別墅及公園"
+              >別墅及公園</a
+            >
+          </li>
+          <li class="item">
+            <a class="link" href="./attraction.html?category=廣場及噴泉"
+              >廣場及噴泉</a
+            >
+          </li>
+          <li class="item">
+            <a class="link" href="./attraction.html?category=聖殿及教堂"
+              >聖殿及教堂</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+    <main id="main-el">
+      <div id="app"></div>
+      <section class="comment" style="min-height: 100vh">
+        <div class="container">
+          <h2 class="section-title">旅客評論 <span>Commenti</span></h2>
+          <div class="comment__inner">
+            <a id="comment-modal-btn" href="" class="btn btn-action"
+              >撰寫評論</a
+            >
+            <div id="comment-container" class="column-container"></div>
+          </div>
+        </div>
+      </section>
+      <!-- 撰寫評論 -->
+      <div id="comment-modal" class="comment__modal">
+        <form action="" id="comment-form" class="comment__form">
+          <div class="comment__card-user">
+            <img id="comment-user-avatar" src="" alt="" />
+            <p id="comment-user-name" class="comment__card-user-name">
+              UserName
+            </p>
+          </div>
+          <textarea
+            id="comment-textarea"
+            name="textarea"
+            rows="10"
+            placeholder="分享您在這個景點的親身體驗"
+          ></textarea>
+          <label for="form-file" class="btn btn-dark"
+            >新增照片<input id="form-file" type="file"
+          /></label>
+          <div class="img-container">
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+          </div>
+          <div class="btn-container">
+            <input
+              id="comment-cancel-btn"
+              type="button"
+              class="btn btn-cancel close-modal-btn"
+              value="取消"
+            />
+            <button
+              id="comment-submit-btn"
+              type="submit"
+              class="btn btn-action"
+            >
+              發佈評論
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <script type="text/javascript">
+      // sidemanu
+      const sidemenuToggle = document.querySelector("#sidemenu-toggle");
+      const mainEl = document.querySelector("#main-el");
+      const sidemenuEl = document.querySelector("#sidemenu-el");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 0) {
+          document.querySelector("#primary-header").classList.add("scrollDown");
+        } else {
+          document
+            .querySelector("#primary-header")
+            .classList.remove("scrollDown");
+        }
+      });
+
+      sidemenuToggle.addEventListener("click", () => {
+        document.body.classList.toggle("sidemenu-open");
+      });
+
+      mainEl.addEventListener("click", () => {
+        if (document.body.classList.contains("sidemenu-open")) {
+          document.body.classList.remove("sidemenu-open");
+        }
+      });
+
+      sidemenuEl.addEventListener("click", (e) => {
+        let target = e.target;
+        if (target.classList.contains("dropdown-toggle")) {
+          target.classList.toggle("dropdown-open");
+
+          const sidemenuItems = target.nextElementSibling.children;
+          if (target.classList.contains("dropdown-open")) {
+            for (let i = 0; i < sidemenuItems.length; i++) {
+              setTimeout(() => {
+                sidemenuItems[i].classList.add("open");
+              }, 0 + i * 150);
+            }
+          } else {
+            for (let item of sidemenuItems) {
+              item.classList.remove("open");
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

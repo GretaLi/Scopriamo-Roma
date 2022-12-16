@@ -1,0 +1,217 @@
+@import "reset";
+@import "mixin";
+@import "base";
+@import "layout";
+@import "component";
+@import "navigation";
+
+// topmenu
+
+body.attraction-page {
+  background: var(--clr-primary);
+  color: hsl(var(--clr-secondary));
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 130px;
+  padding-bottom: 130px;
+}
+
+// searchbar
+.searchbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+  row-gap: 3em;
+  padding: 3em 2em 3em;
+  background: rgba(252, 250, 248, 0.04);
+  backdrop-filter: blur(40px);
+  font-size: 0.875rem;
+
+  .select-group {
+    width: calc(50% - 0.5em);
+    max-width: 25ch;
+  }
+  .select-group,
+  .input-group {
+    position: relative;
+    display: flex;
+    align-content: flex-start;
+  }
+
+  .input-group {
+    gap: 1em;
+  }
+  .select-label,
+  .input-label {
+    top: -1.5em;
+    position: absolute;
+  }
+
+  select,
+  input {
+    height: 2.5em;
+    display: block;
+    font-size: var(--fs-300);
+    padding: 0.5rem;
+    line-height: 1;
+    border-radius: 5px;
+    border-color: transparent;
+    background: hsl(var(--clr-light));
+    color: hsl(var(--clr-veryDark));
+  }
+  select {
+    position: relative;
+    width: 100%;
+    min-width: 18ch;
+  }
+
+  input {
+    width: 100%;
+    min-width: 30ch;
+    &::placeholder {
+      opacity: 0.8;
+      color: hsl(var(--clr-accent));
+    }
+  }
+  button {
+    margin: 0;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  @include lg {
+    .select-group {
+      width: 25ch;
+    }
+  }
+}
+
+// attraction section
+.attraction {
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    .card {
+      position: relative;
+      width: 80%;
+      background: rgba(252, 250, 248, 0.1);
+      box-shadow: 0 5px 20px rgb(19, 18, 18);
+      border-radius: 4px;
+      text-align: center;
+      transition: all 0.5s ease;
+
+      a {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      &__img {
+        height: 12em;
+        overflow: hidden;
+        img {
+          border-radius: 4px 4px 0 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      &__text {
+        display: flex;
+        height: calc(100% - 12em);
+        padding: 0.75em;
+        h3 {
+          margin: auto;
+          line-height: 1.2em;
+          letter-spacing: 2px;
+        }
+      }
+    }
+
+    //bookmark
+    .bookmark.material-symbols-outlined {
+      position: absolute;
+      top: -0.2em;
+      right: 0.25em;
+      color: hsl(var(--clr-light));
+      font-size: var(--fs-600);
+      font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 48;
+      cursor: pointer;
+
+      &:hover,
+      &[data-isAdded="true"] {
+        color: hsl(var(--clr-accent));
+      }
+    }
+    @include md {
+      justify-content: flex-start;
+      .card {
+        width: calc(50% - 1.5em);
+        &__img {
+          height: 14em;
+        }
+        &__text {
+          height: calc(100% - 14em);
+        }
+        &:hover {
+          transform: translateY(-3%);
+          box-shadow: 0 15px 25px rgb(19, 18, 18);
+        }
+      }
+    }
+    @include lg {
+      .card {
+        width: calc(100% / 3 - 1.66em);
+        &__img {
+          height: 10em;
+        }
+        &__text {
+          height: calc(100% - 10em);
+        }
+      }
+    }
+  }
+
+  .period-tags {
+    min-height: 8em;
+    padding: 2em 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+
+    .tag {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        background: hsl(var(--clr-light));
+        color: hsl(var(--clr-veryDark));
+        font-weight: var(--fw-med);
+      }
+      .material-symbols-outlined {
+        margin-left: 0.25em;
+        padding-bottom: 0.1em;
+        font-size: inherit;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  &__empty {
+    display: none;
+    text-align: center;
+    font-weight: var(--fw-med);
+    font-size: var(--fs-500);
+    letter-spacing: 2px;
+    &.active {
+      display: block;
+    }
+  }
+}

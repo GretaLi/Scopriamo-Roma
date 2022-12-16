@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>藝起逛羅馬 | 會員</title>
+    <!-- Google Icon -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="stylesheet" href="../style/user.css" />
+    <!-- Axios.js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+      defer
+    ></script>
+    <!-- Sweet alert.js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.15/dist/sweetalert2.all.min.js"
+      defer
+    ></script>
+    <script src="../js/user.js" defer></script>
+  </head>
+  <body class="signin-page">
+    <header id="primary-header">
+      <nav>
+        <h1 class="logo logo-s">
+          <a href="./index.html"
+            ><em>藝起<br />逛羅馬</em>
+            <small>義大利旅遊<br />中文資訊網</small>
+          </a>
+        </h1>
+      </nav>
+    </header>
+    <main id="main-el">
+      <section class="user">
+        <div class="user-bg"><canvas id="noise" class="noise"></canvas></div>
+        <!-- 註冊會員 siginup -->
+        <div class="signup user-container" id="signup">
+          <form class="panel">
+            <h2>註冊會員</h2>
+            <div class="input-group input-account">
+              <label for="signup-account">電子信箱</label>
+              <input type="email" id="signup-account" />
+              <p class="signup-msg"></p>
+            </div>
+            <div class="input-group input-account">
+              <label for="signup-name">名稱</label>
+              <input type="text" id="signup-name" />
+              <p class="signup-msg"></p>
+            </div>
+            <div class="input-group input-password">
+              <label for="signup-password">密碼</label>
+              <input type="password" id="signup-password" />
+              <p class="signup-msg"></p>
+            </div>
+            <input class="btn" type="submit" id="signup-btn" value="註冊" />
+          </form>
+
+          <p>已經是會員了嗎? <a id="open-signin" href="#">登入</a></p>
+        </div>
+
+        <!-- 登入會員 signin -->
+        <div class="signin user-container" id="signin">
+          <form class="panel">
+            <h2>登入會員</h2>
+            <div class="input-group">
+              <label for="signin-account">電子信箱</label>
+              <input type="email" id="signin-account" />
+              <p class="signin-msg"></p>
+            </div>
+            <div class="input-group">
+              <label for="signin-password">密碼</label>
+              <input type="password" id="signin-password" />
+              <p class="signin-msg"></p>
+            </div>
+            <input class="btn" type="submit" id="signin-btn" value="登入" />
+          </form>
+
+          <p>還沒註冊會員? <a href="#" id="open-signup">註冊</a></p>
+        </div>
+
+        <!-- 註冊/登入成功 Success Card-->
+        <div id="success-container" class="user-container success">
+          <div class="panel">
+            <i class="fa-solid fa-circle-check"></i>
+            <p class="success-msg"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="policy">
+      <a href="#">隱私條款</a>
+    </footer>
+
+    <script type="text/javascript">
+      // NOISE
+      const noise = (el) => {
+        let canvas, ctx;
+
+        let wWidth, wHeight;
+
+        let noiseData = [];
+        let frame = 0;
+
+        let loopTimeout;
+
+        // Create Noise
+        const createNoise = () => {
+          const idata = ctx.createImageData(wWidth, wHeight);
+          const buffer32 = new Uint32Array(idata.data.buffer);
+          const len = buffer32.length;
+
+          for (let i = 0; i < len; i++) {
+            if (Math.random() < 0.5) {
+              buffer32[i] = 0xffcdebff;
+            }
+          }
+
+          noiseData.push(idata);
+        };
+
+        // Play Noise
+        const paintNoise = () => {
+          if (frame === 9) {
+            frame = 0;
+          } else {
+            frame++;
+          }
+
+          ctx.putImageData(noiseData[frame], 0, 0);
+        };
+
+        // Loop
+        const loop = () => {
+          paintNoise(frame);
+
+          loopTimeout = window.setTimeout(() => {
+            window.requestAnimationFrame(loop);
+          }, 1000 / 25);
+        };
+
+        // Setup
+        const setup = () => {
+          wWidth = window.innerWidth;
+          wHeight = window.innerHeight;
+
+          canvas.width = wWidth;
+          canvas.height = wHeight;
+
+          for (let i = 0; i < 10; i++) {
+            createNoise();
+          }
+
+          loop();
+        };
+
+        // Reset
+        let resizeThrottle;
+        const reset = () => {
+          window.addEventListener(
+            "resize",
+            () => {
+              window.clearTimeout(resizeThrottle);
+
+              resizeThrottle = window.setTimeout(() => {
+                window.clearTimeout(loopTimeout);
+                setup();
+              }, 200);
+            },
+            false
+          );
+        };
+
+        // Init
+        const init = (() => {
+          canvas = document.querySelector(el);
+          ctx = canvas.getContext("2d");
+          setup();
+        })();
+      };
+
+      noise("#noise");
+    </script>
+  </body>
+</html>

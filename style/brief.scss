@@ -1,0 +1,240 @@
+@import "reset";
+@import "mixin";
+@import "base";
+@import "layout";
+@import "component";
+@import "navigation";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.topmenu {
+  display: block;
+}
+
+.main {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: hsl(var(--clr-secondary));
+  scroll-behavior: smooth;
+}
+
+.arrow-down {
+  position: fixed;
+  z-index: 100;
+  bottom: 10%;
+  left: calc(50%);
+  // transform: translateX(-50%);
+  animation: float 2s ease-in-out infinite;
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: 50%;
+    width: 2.5em;
+    aspect-ratio: 1;
+    background: hsl(var(--clr-secondary), 0.04);
+    transform: translate(-50%, 50%);
+    border-radius: 50%;
+    animation: circle 2s ease-in-out infinite;
+  }
+  &::before {
+    content: "Scroll";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -150%);
+    font-size: 12px;
+  }
+}
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes circle {
+  50% {
+    width: 2em;
+  }
+}
+
+.ebook {
+  width: 100%;
+  min-height: 100vh;
+  line-height: 2;
+  color: hsl(var(--clr-secondary));
+  @include lg {
+    min-height: 200vh;
+    margin-top: 0;
+  }
+}
+
+.ebook__image1 {
+  min-height: 100%;
+  min-width: 100%;
+  background: url(../img/brief_1.png), var(--clr-primary);
+  background-blend-mode: overlay;
+  background-size: cover;
+}
+
+@for $i from 2 through 5 {
+  .ebook__image#{$i} {
+    min-height: 100%;
+    min-width: 100%;
+    background: url(../img/brief_#{$i}.jpg), var(--clr-primary);
+    background-blend-mode: overlay;
+    background-position: top center;
+    background-size: cover;
+  }
+}
+.ebook__cover {
+  position: sticky;
+  top: 0;
+  height: 0vh;
+  height: 50vh;
+  min-height: 400px;
+  width: 100%;
+  overflow: hidden;
+
+  @include lg {
+    height: 100vh;
+    width: 100%;
+  }
+}
+
+.ebook__body {
+  flex-grow: 1;
+  width: 100%;
+  position: relative;
+  padding: 5%;
+
+  @include lg {
+    margin-left: auto;
+    padding-left: 0;
+    width: 50%;
+  }
+}
+
+.ebook__content {
+  width: 100%;
+  padding: 2em;
+  margin-top: 100%;
+  line-height: 2;
+  background: hsl(var(--clr-secondary), 0.04);
+  backdrop-filter: blur(80px);
+  border-radius: var(--br-s);
+  font-size: var(--fs-400);
+  letter-spacing: 0.2em;
+
+  @include lg {
+    margin-top: 0%;
+    padding: 3.5em 3em;
+  }
+  &::first-letter {
+    font-size: 1.5em;
+  }
+
+  p {
+    text-align: justify;
+    margin-bottom: 1.5em;
+  }
+
+  strong {
+    margin-bottom: 0.5em;
+    display: block;
+    font-weight: var(--fw-med);
+    letter-spacing: 0.1em;
+  }
+
+  em {
+    font-weight: var(--fw-med);
+  }
+}
+
+.ebook__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ebook__header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
+  letter-spacing: 0.2em;
+  text-align: center;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2), 2px 2px 24px rgba(0, 0, 0, 0.16);
+}
+
+.ebook__eyebrow {
+  width: 100%;
+  margin-bottom: 0.35em;
+  letter-spacing: 0.12em;
+  font-size: 1.4rem;
+  font-weight: var(--fw-semi);
+  text-transform: uppercase;
+  @include lg {
+    margin-right: auto;
+    width: 50%;
+  }
+}
+.ebook__title {
+  width: 100%;
+  line-height: 1.3;
+  color: hsl(var(--clr-accent));
+  font-size: 3.2rem;
+  font-weight: var(--fw-med);
+
+  @include lg {
+    font-size: 3.8rem;
+    width: 50%;
+    margin-right: auto;
+  }
+}
+
+.ebook__subtitle {
+  font-size: 2rem;
+  margin-top: 0.65em;
+  line-height: 1.5;
+  width: 100%;
+  @include lg {
+    font-size: 2.2rem;
+    width: 50%;
+    margin-right: auto;
+  }
+}
+
+.ebook__media {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5em 0;
+  grid-column-start: 1;
+  grid-column-end: 11;
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>藝起逛羅馬 | 探索景點</title>
+    <!-- Google Icon -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="stylesheet" href="../style/attraction.css" />
+    <!-- Axios.js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+      defer
+    ></script>
+    <!-- Sweet alert.js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.15/dist/sweetalert2.all.min.js"
+      defer
+    ></script>
+    <script type="module" src="../js/attraction.js" defer></script>
+  </head>
+  <body class="attraction-page">
+    <header id="primary-header">
+      <nav class="topmenu" id="top-nav">
+        <ul class="topmenu__inner">
+          <li class="item">
+            <a href="./city.html"><span>探索</span>城市</a>
+          </li>
+          <li class="item">
+            <a class="active" href="./attraction.html"><span>探索</span>景點</a>
+          </li>
+          <li class="item">
+            <a href="./bookmark.html"><span>規劃</span>行程</a>
+          </li>
+
+          <li id="user-menu" class="item user-menu">
+            <a id="signup-btn" href="./signin.html?register=true">註冊</a>
+            <a id="signin-btn" href="./signin.html">登入</a>
+          </li>
+        </ul>
+      </nav>
+      <!-- 左側選單 -->
+      <button id="sidemenu-toggle" class="sidemenu-toggle" aria-label="toggle">
+        <span class="hamburger"></span>
+      </button>
+      <div class="sidebar">
+        <h1 class="logo logo-s">
+          <a href="index.html"
+            ><em>藝起<br />逛羅馬</em></a
+          >
+        </h1>
+      </div>
+      <div id="sidemenu-el" class="sidemenu">
+        <ul class="sidemenu__inner">
+          <li class="item">
+            <a class="link active" href="./attraction.html?category=歷史遺跡"
+              >歷史遺跡</a
+            >
+          </li>
+          <li class="item">
+            <a class="link" href="./attraction.html?category=博物館及美術館"
+              >博物館及美術館</a
+            >
+          </li>
+          <li class="item">
+            <a class="link" href="./attraction.html?category=別墅及公園"
+              >別墅及公園</a
+            >
+          </li>
+          <li class="item">
+            <a class="link" href="./attraction.html?category=廣場及噴泉"
+              >廣場及噴泉</a
+            >
+          </li>
+          <li class="item">
+            <a class="link" href="./attraction.html?category=聖殿及教堂"
+              >聖殿及教堂</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+    <main id="main-el">
+      <div class="container">
+        <form class="searchbar" id="search-form">
+          <div class="select-group">
+            <label class="select-label" for="category">選擇類別</label>
+            <select name="category" id="category">
+              <option value="all" selected>全部類別</option>
+              <option value="歷史遺跡">歷史遺跡</option>
+              <option value="博物館及美術館">博物館及美術館</option>
+              <option value="別墅及公園">別墅及公園</option>
+              <option value="廣場及噴泉">廣場及噴泉</option>
+              <option value="聖殿及教堂">聖殿及教堂</option>
+            </select>
+          </div>
+          <div class="select-group">
+            <label class="select-label" for="period">選擇年代</label>
+            <select name="period" id="period">
+              <option value="all" selected>全部年代</option>
+              <option value="古羅馬">古羅馬 　　(前10世紀 - 5世紀中)</option>
+              <option value="中世紀">中世紀羅馬 (5世紀末 - 14世紀末)</option>
+              <option value="文藝復興">文藝復興　(15世紀初 - 16世紀末)</option>
+              <option value="近代">近代羅馬　(17世紀初 - 18世紀中)</option>
+              <option value="現代">現代羅馬　(18世紀末 - 20世紀初)</option>
+              <option value="當代">當代羅馬　(20世紀中 - 現今)</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="search-text">關鍵字</label>
+            <input
+              id="search-text"
+              type="text"
+              placeholder="星期日免費、巴洛克風格..."
+            />
+            <button id="search-btn" class="btn btn-action" type="submit">
+              搜尋
+            </button>
+          </div>
+        </form>
+        <section class="attraction">
+          <div id="period-tags" class="tags period-tags"></div>
+          <ul id="card-container" class="attraction__inner"></ul>
+          <div class="attraction__empty">
+            <p>請選擇類別或年代</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script type="text/javascript">
+      // sidemanu
+      const sidemenuToggle = document.querySelector("#sidemenu-toggle");
+      const mainEl = document.querySelector("#main-el");
+      const sidemenuEl = document.querySelector("#sidemenu-el");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 0) {
+          document.querySelector("#primary-header").classList.add("scrollDown");
+        } else {
+          document
+            .querySelector("#primary-header")
+            .classList.remove("scrollDown");
+        }
+      });
+
+      sidemenuToggle.addEventListener("click", () => {
+        document.body.classList.toggle("sidemenu-open");
+      });
+
+      mainEl.addEventListener("click", () => {
+        if (document.body.classList.contains("sidemenu-open")) {
+          document.body.classList.remove("sidemenu-open");
+        }
+      });
+
+      sidemenuEl.addEventListener("click", (e) => {
+        let target = e.target;
+        if (target.classList.contains("dropdown-toggle")) {
+          target.classList.toggle("dropdown-open");
+
+          const sidemenuItems = target.nextElementSibling.children;
+          if (target.classList.contains("dropdown-open")) {
+            for (let i = 0; i < sidemenuItems.length; i++) {
+              setTimeout(() => {
+                sidemenuItems[i].classList.add("open");
+              }, 0 + i * 150);
+            }
+          } else {
+            for (let item of sidemenuItems) {
+              item.classList.remove("open");
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
