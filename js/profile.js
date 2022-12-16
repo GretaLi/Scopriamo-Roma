@@ -2,7 +2,7 @@ import { setUserMenuBtn, localLoginChecker } from "./userMenu.js";
 
 let userId = parseInt(localStorage.getItem("userId"));
 let userName = localStorage.getItem("userName");
-const baseUrl = "https://json-server-vercel-main.vercel.app";
+const baseUrl = "https://json-server-vercel-main-7wwq5qqbi-gretali.vercel.app";
 
 init();
 function init() {

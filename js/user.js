@@ -48,7 +48,7 @@ signinBtn.addEventListener("click", (e) => {
 });
 
 // 1-2. signup function
-const baseUrl = "https://json-server-vercel-main.vercel.app";
+const baseUrl = "https://json-server-vercel-main-7wwq5qqbi-gretali.vercel.app";
 function callSignUp() {
   let email = signupAccount.value;
   let password = signupPassword.value;

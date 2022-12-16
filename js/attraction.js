@@ -25,7 +25,7 @@ function eventListener() {
 }
 
 // 2. axios prepare data
-const baseUrl = "https://json-server-vercel-main.vercel.app";
+const baseUrl = "https://json-server-vercel-main-7wwq5qqbi-gretali.vercel.app";
 let data = [];
 
 setUserMenuBtn();
@@ -35,6 +35,7 @@ function init() {
   axios
     .get(`${baseUrl}/attractions?_embed=bookmarks`)
     .then(function (response) {
+      console.log(response);
       data = response.data;
       renderCard(data);
       eventListener();
@@ -189,6 +190,7 @@ function renderCardbySearch(e) {
       `${baseUrl}/attractions?q=${queryStr}${selectOptions}&_embed=bookmarks`
     )
     .then(function (response) {
+      console.log(response);
       let data = response.data;
       renderCard(data);
     });
