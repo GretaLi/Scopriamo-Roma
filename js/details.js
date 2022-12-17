@@ -395,13 +395,13 @@ function renderComment(commentDataArr) {
   document.querySelector("#comment-container").innerHTML = renderHtml;
 }
 function renderEditCommentModal(commentId) {
-  console.log(avatar);
   axios
     .get(`${baseUrl}/comments/${parseInt(commentId)}`)
     .then(function (response) {
       const modal = document.createElement("div");
       modal.classList.add("comment__modal");
       modal.style.display = "flex";
+      modal.setAttribute("id", "comment-edit-modal");
       modal.innerHTML = `
     <form action="" class="comment__form edit">
       <div class="comment__card-user">
@@ -749,6 +749,8 @@ function postComment(form) {
         },
       });
       getCommentsData();
+      form.reset();
+      document.querySelector("#comment-modal").style.display = "none";
     })
     .catch((error) => {
       console.log(error);
@@ -787,6 +789,7 @@ function editComment(commentId, form) {
         },
       });
       getCommentsData();
+      document.querySelector("#comment-edit-modal").remove();
     })
     .catch((error) => {
       console.log(error);
@@ -804,6 +807,7 @@ function deleteComment(commentId) {
     .then((response) => {
       console.log(response);
       getCommentsData();
+      document.querySelector("#comment-edit-modal").remove();
     })
     .catch((error) => {
       console.log(error);
