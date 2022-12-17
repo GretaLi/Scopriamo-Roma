@@ -10,7 +10,7 @@ let userId = parseInt(localStorage.getItem("userId"));
 let userName = localStorage.getItem("userName");
 let avatar = localStorage.getItem("avatar");
 
-const baseUrl = "https://json-server-vercel-main-jwuxb2h7m-gretali.vercel.app";
+const baseUrl = "https://json-server-render-roma.onrender.com";
 
 const sliderArr = [];
 
@@ -33,6 +33,7 @@ const templateOfIntro = (data) => {
 
   return `
   <section
+  id="intro"
   class="intro"
   style="background-image: url(${data.imgBgUrl});"
   >
@@ -44,10 +45,6 @@ const templateOfIntro = (data) => {
         ${tagsHtml}
       </div>
     </header>
-    <div class="intro__weather">
-        <p class="intro__weather-degree"><i class="fa-solid fa-temperature-three-quarters"></i>25-26°C</p>
-        <p class="intro__weather-humid"><i class="fa-solid fa-droplet"></i>30%</p>
-    </div>
   </div>
   </section>
 `;
@@ -68,7 +65,7 @@ const templateOfVisit = (data) => {
     `;
   });
   return `
-<section class="visit">
+<section id="visit" class="visit">
   <div class="container">
     <article>
 
@@ -137,7 +134,7 @@ const templateOfTour = (data) => {
     `;
   });
 
-  return `<section class="virtrul-tour">
+  return `<section id="tour" class="virtrul-tour">
           <div class="container">
             <h2 class="section-title">虛擬導覽 <span>Turismo Digitale</span></h2>
             <div class="slider">
@@ -751,6 +748,7 @@ function postComment(form) {
           container: "left-80px",
         },
       });
+      getCommentsData();
     })
     .catch((error) => {
       console.log(error);
@@ -788,6 +786,7 @@ function editComment(commentId, form) {
           container: "left-80px",
         },
       });
+      getCommentsData();
     })
     .catch((error) => {
       console.log(error);
@@ -804,6 +803,7 @@ function deleteComment(commentId) {
     })
     .then((response) => {
       console.log(response);
+      getCommentsData();
     })
     .catch((error) => {
       console.log(error);
