@@ -394,6 +394,88 @@ section:hover .section-title span {
   font-weight: var(--fw-med) !important;
 }
 
+.arrow {
+  -webkit-animation: float 2s ease-in-out infinite;
+          animation: float 2s ease-in-out infinite;
+}
+.arrow > *,
+.arrow *::after,
+.arrow *::before {
+  transition: all 0.3s ease;
+}
+.arrow::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: 50%;
+  width: 2.5em;
+  aspect-ratio: 1;
+  background: hsl(var(--clr-secondary), 0.04);
+  transform: translate(-50%, 50%);
+  border-radius: 50%;
+  -webkit-animation: circle 2s ease-in-out infinite;
+          animation: circle 2s ease-in-out infinite;
+}
+.arrow::before {
+  content: "Scroll";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -150%);
+  font-size: 12px;
+}
+
+.arrow-top {
+  cursor: pointer;
+}
+.arrow-top img {
+  transform: scale(0.7) rotate(180deg);
+}
+.arrow-top::after {
+  top: -25%;
+  bottom: auto;
+}
+.arrow-top::before {
+  content: "Top";
+  bottom: -40%;
+  top: auto;
+}
+
+@-webkit-keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@-webkit-keyframes circle {
+  50% {
+    width: 2em;
+  }
+}
+@keyframes circle {
+  50% {
+    width: 2em;
+  }
+}
 .topmenu {
   position: absolute;
   top: 0;
@@ -1539,4 +1621,47 @@ section {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.arrow-down {
+  right: 1em;
+  bottom: 2em;
+  position: fixed;
+  z-index: 20;
+  display: none;
+}
+@media (min-width: 600px) {
+  .arrow-down {
+    opacity: 0.6;
+    display: block;
+  }
+}
+
+.section-navigation {
+  position: fixed;
+  top: 45%;
+  width: 2em;
+  right: 0;
+  box-sizing: content-box;
+  font-size: var(--fs-300);
+  transform: translateY(-50%);
+  display: none;
+}
+.section-navigation a {
+  padding: 1em 0.5em;
+  margin: auto;
+  display: block;
+  border: 1px solid hsl(var(--clr-light));
+  font-weight: 400;
+}
+.section-navigation a.active {
+  background: hsl(var(--clr-light));
+  color: hsl(var(--clr-dark));
+  transition: all 0.3s ease;
+}
+@media (min-width: 600px) {
+  .section-navigation {
+    opacity: 0.8;
+    display: block;
+  }
 }/*# sourceMappingURL=details.css.map */
