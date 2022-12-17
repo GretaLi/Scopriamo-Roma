@@ -83,6 +83,10 @@ Repo: https://github.com/GretaLi/Scopriamo-Roma
 
 - [圖片蒐集 | 部分圖片本人實際拍攝]()
 
+- [資料文本 | 羅馬市政博物館系統](https://www.museiincomuneroma.it/it)
+
+- [資料文本 | 羅馬官方旅遊網](https://www.turismoroma.it/)
+
 - [資料文本 | Wikipedia](https://zh.wikipedia.org/)
 
 - [資料文本 | 羅馬、梵諦岡深度之旅@潘錫鳳 (2018 太雅出版)](https://www.books.com.tw/products/0010777377)
