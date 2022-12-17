@@ -114,7 +114,7 @@
     </header>
     <main id="main-el">
       <div id="app"></div>
-      <section class="comment" style="min-height: 100vh">
+      <section id="comment" class="comment" style="min-height: 100vh">
         <div class="container">
           <h2 class="section-title">旅客評論 <span>Commenti</span></h2>
           <div class="comment__inner">
@@ -165,8 +165,17 @@
           </div>
         </form>
       </div>
+      <!-- 至頂按鈕 -->
+      <a class="arrow arrow-down">
+        <img src="../img/arrow_down.svg" alt="向下箭頭" />
+      </a>
+      <div class="section-navigation">
+        <a href="#visit">參觀資訊</a>
+        <a href="#tour">虛擬導覽</a>
+        <a href="#comment">旅客評論</a>
+      </div>
     </main>
-
+    <footer id="footer"></footer>
     <script type="text/javascript">
       // sidemanu
       const sidemenuToggle = document.querySelector("#sidemenu-toggle");
@@ -181,7 +190,43 @@
             .querySelector("#primary-header")
             .classList.remove("scrollDown");
         }
+
+        detectScrollSection("#visit");
+        detectScrollSection("#tour");
+        detectScrollSection("#comment");
+        function detectScrollSection(elId) {
+          const el = document.querySelector(elId);
+          const elHeight = el.offsetHeight;
+
+          if (
+            window.scrollY > el.offsetTop - 20 &&
+            window.scrollY < el.offsetTop + elHeight - 20
+          ) {
+            document.querySelector(`a[href="${elId}"]`).classList.add("active");
+          } else {
+            document
+              .querySelector(`a[href="${elId}"]`)
+              .classList.remove("active");
+          }
+        }
+
+        const arrowBtn = document.querySelector(".arrow");
+        if (
+          window.scrollY >
+          document.querySelector("#comment").offsetTop - 20
+        ) {
+          console.log("hih");
+          arrowBtn.classList.add("arrow-top");
+          arrowBtn.setAttribute("onclick", "scrollToTop()");
+        } else {
+          arrowBtn.setAttribute("onclick", "");
+          arrowBtn.classList.remove("arrow-top");
+        }
       });
+
+      function scrollToTop() {
+        window.scrollTo(0, 0);
+      }
 
       sidemenuToggle.addEventListener("click", () => {
         document.body.classList.toggle("sidemenu-open");
