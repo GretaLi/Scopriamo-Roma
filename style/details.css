@@ -1159,16 +1159,22 @@ section {
   max-height: 40em;
   display: flex;
   gap: 0.5em;
-  justify-content: space-between;
+  flex-direction: column;
 }
-.virtrul-tour .slider__inner::after {
-  position: absolute;
-  content: "";
-  top: 0;
-  bottom: 0;
-  right: 8px;
-  width: 1px;
-  background: hsl(var(--clr-accent));
+@media (min-width: 600px) {
+  .virtrul-tour .slider__inner {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+  .virtrul-tour .slider__inner::after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    top: 0;
+    right: 8px;
+    width: 1px;
+    background: hsl(var(--clr-accent));
+  }
 }
 .virtrul-tour .slider__innerinner {
   width: 100%;
@@ -1178,9 +1184,14 @@ section {
   display: none;
 }
 .virtrul-tour .slider__display {
-  height: 524px;
+  height: 100%;
   width: 100%;
   border-top-left-radius: var(--br-s);
+}
+@media (min-width: 600px) {
+  .virtrul-tour .slider__display {
+    height: 524px;
+  }
 }
 .virtrul-tour .slider__display img {
   height: 100%;
@@ -1191,8 +1202,14 @@ section {
 }
 .virtrul-tour .slider__display iframe {
   display: none;
-  height: 100%;
+  height: 20em;
   width: 100%;
+}
+@media (min-width: 600px) {
+  .virtrul-tour .slider__display iframe {
+    min-height: unset;
+    height: 100%;
+  }
 }
 .virtrul-tour .slider__display iframe.active,
 .virtrul-tour .slider__display img.active {
@@ -1206,10 +1223,16 @@ section {
 .virtrul-tour .slider__pagination div {
   border-radius: 0px;
   flex-shrink: 0;
-  width: 110px;
-  height: 80px;
+  width: 60px;
+  height: 40px;
   cursor: pointer;
   transition: all 0.3s linear;
+}
+@media (min-width: 600px) {
+  .virtrul-tour .slider__pagination div {
+    width: 110px;
+    height: 80px;
+  }
 }
 .virtrul-tour .slider__pagination div img {
   width: 100%;
@@ -1221,14 +1244,20 @@ section {
   opacity: 0.8;
 }
 .virtrul-tour .slider__info {
-  width: 25%;
+  width: 100%;
   min-width: 25ch;
-  height: 612px;
+  height: 40%;
   padding: 1em;
   border: 1px solid hsl(var(--clr-accent));
   border-right: 4px solid hsl(var(--clr-accent));
   border-bottom-right-radius: var(--br-s);
   overflow-y: scroll;
+}
+@media (min-width: 600px) {
+  .virtrul-tour .slider__info {
+    width: 25%;
+    height: 612px;
+  }
 }
 .virtrul-tour .slider__info::-webkit-scrollbar {
   display: none;
@@ -1664,4 +1693,8 @@ section {
     opacity: 0.8;
     display: block;
   }
+}
+
+#map {
+  z-index: 0;
 }/*# sourceMappingURL=details.css.map */

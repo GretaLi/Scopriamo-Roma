@@ -303,16 +303,19 @@ section {
       max-height: 40em;
       display: flex;
       gap: 0.5em;
-      justify-content: space-between;
-
-      &::after {
-        position: absolute;
-        content: "";
-        top: 0;
-        bottom: 0;
-        right: 8px;
-        width: 1px;
-        background: hsl(var(--clr-accent));
+      flex-direction: column;
+      @include md {
+        justify-content: space-between;
+        flex-direction: row;
+        &::after {
+          position: absolute;
+          content: "";
+          bottom: 0;
+          top: 0;
+          right: 8px;
+          width: 1px;
+          background: hsl(var(--clr-accent));
+        }
       }
     }
     &__innerinner {
@@ -323,9 +326,12 @@ section {
       }
     }
     &__display {
-      height: 524px;
+      height: 100%;
       width: 100%;
       border-top-left-radius: var(--br-s);
+      @include md {
+        height: 524px;
+      }
       img {
         height: 100%;
         width: 100%;
@@ -334,8 +340,12 @@ section {
       }
       iframe {
         display: none;
-        height: 100%;
+        height: 20em;
         width: 100%;
+        @include md {
+          min-height: unset;
+          height: 100%;
+        }
       }
       iframe.active,
       img.active {
@@ -346,13 +356,18 @@ section {
       bottom: 0;
       display: flex;
       overflow-x: scroll;
+
       div {
         border-radius: 0px;
         flex-shrink: 0;
-        width: 110px;
-        height: 80px;
+        width: 60px;
+        height: 40px;
         cursor: pointer;
         transition: all 0.3s linear;
+        @include md {
+          width: 110px;
+          height: 80px;
+        }
         img {
           width: 100%;
           height: 100%;
@@ -364,14 +379,18 @@ section {
       }
     }
     &__info {
-      width: 25%;
+      width: 100%;
       min-width: 25ch;
-      height: 612px;
+      height: 40%;
       padding: 1em;
       border: 1px solid hsl(var(--clr-accent));
       border-right: 4px solid hsl(var(--clr-accent));
       border-bottom-right-radius: var(--br-s);
       overflow-y: scroll;
+      @include md {
+        width: 25%;
+        height: 612px;
+      }
       &::-webkit-scrollbar {
         display: none;
         width: 0;
@@ -769,4 +788,8 @@ section {
     opacity: 0.8;
     display: block;
   }
+}
+
+#map {
+  z-index: 0;
 }
