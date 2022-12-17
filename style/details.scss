@@ -129,6 +129,8 @@ section {
     p {
       line-height: 1.5;
       white-space: break-spaces;
+      letter-spacing: 0.2em;
+      text-align: justify;
     }
   }
 
@@ -183,6 +185,17 @@ section {
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
+  }
+
+  .tab-panel {
+    letter-spacing: 0.2em;
+    padding: 2em 0.5em;
+    @include md {
+      padding: 2em;
+    }
+    @include lg {
+      padding: 2em 3em;
+    }
   }
 }
 

@@ -917,6 +917,8 @@ section {
 .visit__description p {
   line-height: 1.5;
   white-space: break-spaces;
+  letter-spacing: 0.2em;
+  text-align: justify;
 }
 .visit__bookmark {
   margin-bottom: 40px;
@@ -966,6 +968,20 @@ section {
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
+}
+.visit .tab-panel {
+  letter-spacing: 0.2em;
+  padding: 2em 0.5em;
+}
+@media (min-width: 600px) {
+  .visit .tab-panel {
+    padding: 2em;
+  }
+}
+@media (min-width: 900px) {
+  .visit .tab-panel {
+    padding: 2em 3em;
+  }
 }
 
 .virtrul-tour .slider {
