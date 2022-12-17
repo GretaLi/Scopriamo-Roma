@@ -1253,6 +1253,7 @@ main {
   border-radius: var(--br-s);
   border: 1px solid hsl(var(--clr-secondary), 0.5);
   color: hsl(var(--clr-white));
+  letter-spacing: 2px;
   transition: all 0.5s ease;
 }
 @media (min-width: 600px) {
@@ -1265,7 +1266,7 @@ main {
   .explore__card-item {
     min-width: unset;
     width: calc(25% - 1em);
-    padding: 1.75em;
+    padding: 1.25em;
   }
 }
 .explore__card-item h3 {
