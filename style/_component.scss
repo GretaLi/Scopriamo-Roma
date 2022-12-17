@@ -207,3 +207,68 @@ section:hover {
 .fw-med {
   font-weight: var(--fw-med) !important;
 }
+
+// scroll arrow
+.arrow {
+  & > *,
+  *::after,
+  *::before {
+    transition: all 0.3s ease;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: 50%;
+    width: 2.5em;
+    aspect-ratio: 1;
+    background: hsl(var(--clr-secondary), 0.04);
+    transform: translate(-50%, 50%);
+    border-radius: 50%;
+    animation: circle 2s ease-in-out infinite;
+  }
+  &::before {
+    content: "Scroll";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -150%);
+    font-size: 12px;
+  }
+  animation: float 2s ease-in-out infinite;
+}
+
+.arrow-top {
+  cursor: pointer;
+  img {
+    transform: scale(0.7) rotate(180deg);
+  }
+  &::after {
+    top: -25%;
+    bottom: auto;
+  }
+
+  &::before {
+    content: "Top";
+    bottom: -40%;
+    top: auto;
+  }
+}
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes circle {
+  50% {
+    width: 2em;
+  }
+}
