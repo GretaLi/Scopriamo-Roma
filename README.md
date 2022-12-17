@@ -81,6 +81,8 @@ Repo: https://github.com/GretaLi/Scopriamo-Roma
 
 - [圖片蒐集 | Wikimedia](https://commons.wikimedia.org/wiki/Main_Page)
 
+- [圖片蒐集 | 部分圖片本人實際拍攝]()
+
 - [資料文本 | Wikipedia](https://zh.wikipedia.org/)
 
-- [資料文本 | 羅馬、梵諦岡深度之旅@潘錫鳳 (2018 太雅出版)](https://zh.wikipedia.org/)
+- [資料文本 | 羅馬、梵諦岡深度之旅@潘錫鳳 (2018 太雅出版)](https://www.books.com.tw/products/0010777377)
