@@ -730,3 +730,43 @@ section {
     }
   }
 }
+
+.arrow-down {
+  right: 1em;
+  bottom: 2em;
+  position: fixed;
+  z-index: 20;
+  display: none;
+
+  @include md {
+    opacity: 0.6;
+    display: block;
+  }
+}
+
+.section-navigation {
+  position: fixed;
+  top: 45%;
+  width: 2em;
+  right: 0;
+  box-sizing: content-box;
+  font-size: var(--fs-300);
+  transform: translateY(-50%);
+  display: none;
+  a {
+    padding: 1em 0.5em;
+    margin: auto;
+    display: block;
+    border: 1px solid hsl(var(--clr-light));
+    font-weight: 400;
+    &.active {
+      background: hsl(var(--clr-light));
+      color: hsl(var(--clr-dark));
+      transition: all 0.3s ease;
+    }
+  }
+  @include md {
+    opacity: 0.8;
+    display: block;
+  }
+}

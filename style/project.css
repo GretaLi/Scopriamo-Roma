@@ -335,6 +335,88 @@ section:hover .section-title span {
   font-weight: var(--fw-med) !important;
 }
 
+.arrow {
+  -webkit-animation: float 2s ease-in-out infinite;
+          animation: float 2s ease-in-out infinite;
+}
+.arrow > *,
+.arrow *::after,
+.arrow *::before {
+  transition: all 0.3s ease;
+}
+.arrow::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: 50%;
+  width: 2.5em;
+  aspect-ratio: 1;
+  background: hsl(var(--clr-secondary), 0.04);
+  transform: translate(-50%, 50%);
+  border-radius: 50%;
+  -webkit-animation: circle 2s ease-in-out infinite;
+          animation: circle 2s ease-in-out infinite;
+}
+.arrow::before {
+  content: "Scroll";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -150%);
+  font-size: 12px;
+}
+
+.arrow-top {
+  cursor: pointer;
+}
+.arrow-top img {
+  transform: scale(0.7) rotate(180deg);
+}
+.arrow-top::after {
+  top: -25%;
+  bottom: auto;
+}
+.arrow-top::before {
+  content: "Top";
+  bottom: -40%;
+  top: auto;
+}
+
+@-webkit-keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@-webkit-keyframes circle {
+  50% {
+    width: 2em;
+  }
+}
+@keyframes circle {
+  50% {
+    width: 2em;
+  }
+}
 .topmenu {
   position: absolute;
   top: 0;
