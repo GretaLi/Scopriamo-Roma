@@ -26,7 +26,7 @@ export function localLoginChecker() {
       <ul>
         <li>
           <img src="${avatar}"/>
-          <p>Hello, ${userName}</p>
+          <p>Ciao, ${userName} !</p>
         </li>
         <li><a href="./profile.html">會員資料</a></li>
         <li><a href="./index.html" id="usermenu-signout">登出</a></li>
