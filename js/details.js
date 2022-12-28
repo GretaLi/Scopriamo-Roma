@@ -24,7 +24,6 @@ function init() {
 
 // template START
 const templateOfIntro = (data) => {
-  let tags = data.period;
   let tagsHtml = `<p class="tag">${data.category}</p>`;
 
   data.period.forEach((tag) => {
@@ -42,10 +41,11 @@ const templateOfIntro = (data) => {
       <h2 class="intro_title">${data.name_it.replace("\n", "<br/>")}
       <span>${data.name_zh.replace("\n", "<br/>")}</span></h2>
       <div class="tags">
-        ${tagsHtml}
+      ${tagsHtml}
       </div>
     </header>
   </div>
+  <p class="intro__cc">${data.imgCC}</p>
   </section>
 `;
 };
@@ -76,8 +76,8 @@ const templateOfVisit = (data) => {
 
       <div class="visit__info">
         <div id="tabs-container" class="tabs" role="tablist" aria-label="Information Tabs">
-          <h3 id="tab-opentime" class="tab active" role="tab" aria-selected="true" aria-controls="panel-opentime" tabindex="0">開放時間 Orari</h3>
-          <h3 id="tab-tickets" class="tab" role="tab" aria-selected="false" aria-controls="panel-ticket" tabindex="0">門票售價 Biglietti</h3>
+          <h3 id="tab-opentime" class="tab active" role="tab" aria-selected="true" aria-controls="panel-opentime" tabindex="0">開放時間<span> Orari</span></h3>
+          <h3 id="tab-tickets" class="tab" role="tab" aria-selected="false" aria-controls="panel-ticket" tabindex="0">門票售價<span> Biglietti</span></h3>
         </div>
         <div>
           <div id="panel-opentime" class="tab-panel active" role="tabpanel" tabindex="" aria-labelledby="tab-opentime">${
@@ -130,6 +130,7 @@ const templateOfTour = (data) => {
       <img class="active" src="${item.imgUrl}" />
       <iframe src="" data-streetView-url="${item.streetView}" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       <div class="loading"><div class="loading-item"></div></div>
+      <p class="slider__display-cc">Photo Credit: ${item.imgCC}</p>
     </div>
     `;
   });
@@ -286,10 +287,11 @@ function eventListener() {
 
     if (target.id === "slider-toggle") {
       const images = document.querySelectorAll(".swiper-slide img");
+      const imagesCC = document.querySelectorAll(".slider__display-cc");
       const streetViews = document.querySelectorAll(".swiper-slide iframe");
-      console.log(images);
-      console.log(streetViews);
+
       images.forEach((img) => img.classList.toggle("active"));
+      imagesCC.forEach((cc) => cc.classList.toggle("hidden"));
       streetViews.forEach((item) => {
         item.classList.toggle("active");
         const streetViewUrl = item.getAttribute("data-streetView-url");
