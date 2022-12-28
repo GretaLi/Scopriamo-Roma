@@ -35,12 +35,16 @@
     transition: width 0.8s ease;
   }
   span {
+    display: none;
     font-weight: normal;
     margin-left: 0.5em;
     font-family: var(--ff-bellefair);
     text-transform: uppercase;
     color: hsl(var(--clr-light), 0.5);
     transition: color 0.8s ease;
+    @include md {
+      display: inline-block;
+    }
   }
 }
 section:hover {
@@ -55,6 +59,7 @@ section:hover {
 // tags
 .tags {
   display: flex;
+  flex-wrap: wrap;
   gap: 1em;
   font-size: var(--fs-200);
   .tag {
@@ -88,6 +93,13 @@ section:hover {
 
   &:hover {
     color: hsl(var(--clr-secondary));
+  }
+  span {
+    display: none;
+    @include md {
+      display: inline-block;
+      margin-left: 0.5em;
+    }
   }
 }
 .tab.active {
@@ -241,6 +253,7 @@ section:hover {
 }
 
 .arrow-top {
+  display: block !important;
   cursor: pointer;
   img {
     transform: scale(0.7) rotate(180deg);

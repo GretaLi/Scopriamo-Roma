@@ -66,7 +66,7 @@ main {
     align-self: end;
     line-height: 1.25;
     span {
-      font-size: var(--fs-700);
+      font-size: var(--fs-750);
       font-weight: 900;
     }
   }
@@ -284,7 +284,7 @@ main {
 .loop {
   position: absolute;
   font-family: var(--ff-bellefair);
-  font-size: var(--fs-700);
+  font-size: var(--fs-750);
   text-transform: uppercase;
   white-space: nowrap;
   line-height: 2;
@@ -584,7 +584,7 @@ main {
     h3 {
       position: relative;
       line-height: 1.5;
-      font-size: var(--fs-700);
+      font-size: var(--fs-750);
       font-weight: var(--fw-bold);
       font-family: var(--ff-serif);
       color: hsl(var(--clr-accent), 0.8);

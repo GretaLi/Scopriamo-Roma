@@ -82,7 +82,8 @@ table {
   --fw-bold: 900;
   --fs-900: clamp(7rem, 12vw, 12.5rem);
   --fs-800: clamp(3rem, 8vw, 4rem);
-  --fs-700: clamp(3rem, 10vw, 3.75rem);
+  --fs-750: clamp(3rem, 10vw, 3.75rem);
+  --fs-700: clamp(2rem, 8vw, 3.75rem);
   --fs-600: clamp(1.75rem, 3vw, 2.25rem);
   --fs-500: 1.2rem;
   --fs-400: 1rem;
@@ -215,12 +216,18 @@ li {
   transition: width 0.8s ease;
 }
 .section-title span {
+  display: none;
   font-weight: normal;
   margin-left: 0.5em;
   font-family: var(--ff-bellefair);
   text-transform: uppercase;
   color: hsl(var(--clr-light), 0.5);
   transition: color 0.8s ease;
+}
+@media (min-width: 600px) {
+  .section-title span {
+    display: inline-block;
+  }
 }
 
 section:hover .section-title::before {
@@ -232,6 +239,7 @@ section:hover .section-title span {
 
 .tags {
   display: flex;
+  flex-wrap: wrap;
   gap: 1em;
   font-size: var(--fs-200);
 }
@@ -263,6 +271,15 @@ section:hover .section-title span {
 }
 .tab:hover {
   color: hsl(var(--clr-secondary));
+}
+.tab span {
+  display: none;
+}
+@media (min-width: 600px) {
+  .tab span {
+    display: inline-block;
+    margin-left: 0.5em;
+  }
 }
 
 .tab.active {
@@ -427,6 +444,7 @@ section:hover .section-title span {
 }
 
 .arrow-top {
+  display: block !important;
   cursor: pointer;
 }
 .arrow-top img {
@@ -938,7 +956,7 @@ main {
   line-height: 1.25;
 }
 .hero h2:nth-child(1) span {
-  font-size: var(--fs-700);
+  font-size: var(--fs-750);
   font-weight: 900;
 }
 .hero h2:nth-child(2) {
@@ -1169,7 +1187,7 @@ main {
 .loop {
   position: absolute;
   font-family: var(--ff-bellefair);
-  font-size: var(--fs-700);
+  font-size: var(--fs-750);
   text-transform: uppercase;
   white-space: nowrap;
   line-height: 2;
@@ -1499,7 +1517,7 @@ main {
 .top10__card-info h3 {
   position: relative;
   line-height: 1.5;
-  font-size: var(--fs-700);
+  font-size: var(--fs-750);
   font-weight: var(--fw-bold);
   font-family: var(--ff-serif);
   color: hsl(var(--clr-accent), 0.8);
