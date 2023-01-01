@@ -5,6 +5,8 @@ const cardContainer = document.querySelector("#card-container");
 const searchForm = document.querySelector("#search-form");
 const periodTags = document.querySelector("#period-tags");
 const emptyNote = document.querySelector(".attraction__empty");
+const mapToggle = document.querySelector("#map-toggle");
+const mapEl = document.querySelector("#map");
 let periodArr = [];
 
 // 1. handler
@@ -21,6 +23,12 @@ function eventListener() {
       const bookmarkId = target.getAttribute("data-bookmark-id");
       executeBookmark(attractionId, bookmarkId);
     }
+  });
+
+  mapToggle.addEventListener("click", (e) => {
+    mapEl.classList.toggle("active");
+    cardContainer.classList.toggle("hidden");
+    document.querySelector(".container").classList.toggle("open-map");
   });
 }
 
@@ -40,6 +48,7 @@ function init() {
       renderCard(data);
       eventListener();
       renderCardbyLink();
+      renderMapInfo(data);
     });
 }
 
@@ -47,6 +56,7 @@ function init() {
 function renderCard(dataArr) {
   if (dataArr.length == 0) {
     emptyNote.classList.add("active");
+    mapEl.classList.remove("active");
   } else {
     emptyNote.classList.remove("active");
   }
@@ -104,6 +114,7 @@ function renderCardbySelect() {
 
   let selectedDataArr = getSelectedDataArr(category, periodArr);
   renderCard(selectedDataArr);
+  renderMapInfo(selectedDataArr);
 }
 
 function removePeriodTag(e) {
@@ -139,6 +150,7 @@ function renderCardbyLink() {
       "當代",
     ]);
     renderCard(selectedDataArr);
+    renderMapInfo(selectedDataArr);
   }
 }
 
@@ -193,6 +205,7 @@ function renderCardbySearch(e) {
       console.log(response);
       let data = response.data;
       renderCard(data);
+      renderMapInfo(data);
     });
 }
 
@@ -260,4 +273,62 @@ function executeBookmark(attractionId, bookmarkId) {
         console.log(error);
       });
   }
+}
+
+// 4. leafletjs & openstreetmap
+const map = L.map("map").setView([41.89295, 12.482199], 13);
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution:
+    '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+}).addTo(map);
+console.log(map);
+
+function renderMapInfo(data) {
+  const sidebar = L.control.sidebar("map-sidebar", {
+    position: "right",
+  });
+  map.addControl(sidebar);
+
+  setTimeout(function () {
+    sidebar.show();
+  }, 300);
+
+  data.forEach((item) => {
+    const x = Number(item.x);
+    const y = Number(item.y);
+
+    let marker = L.marker([x, y])
+      .addTo(map)
+      .on("click", () => {
+        let visible = sidebar.isVisible();
+        if (!visible) {
+          sidebar.toggle();
+        }
+        DOMinfo(item);
+      });
+    marker._icon.classList.add("huechange");
+  });
+
+  // default info
+  DOMinfo(data[0]);
+}
+function DOMinfo(item) {
+  const renderText = (el, text) => {
+    document.querySelector(el).innerHTML = text;
+  };
+  renderText("#sidebar-title-it", item.name_it.replace("\n", "<br/>"));
+  renderText("#sidebar-title-zh", item.name_zh.replace("\n", "<br/>"));
+  renderText("#panel-opentime", item.opentime);
+  renderText("#panel-ticket", item.entranceFee);
+  document.querySelector("#sidebar-img").setAttribute("src", item.imgUrl);
+  document
+    .querySelector("#sidebar-page-link")
+    .setAttribute("href", `./details.html?id=${item.id}`);
+  document
+    .querySelector("#sidebar-map-link")
+    .setAttribute(
+      "href",
+      `https://www.google.com.tw/maps/search/${item.location}`
+    );
 }

@@ -10,6 +10,14 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <!-- leaflet.css -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="../style/L.Control.Sidebar.css" />
     <link rel="stylesheet" href="../style/attraction.css" />
     <!-- Axios.js -->
     <script
@@ -21,6 +29,19 @@
       src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.15/dist/sweetalert2.all.min.js"
       defer
     ></script>
+    <!-- Fontawsoem Icon -->
+    <script
+      src="https://kit.fontawesome.com/4925ccd0b3.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Leaflet.js -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+      defer
+    ></script>
+    <script src="../js/L.Control.Sidebar.js" defer></script>
     <script type="module" src="../js/attraction.js" defer></script>
   </head>
   <body class="attraction-page">
@@ -124,12 +145,104 @@
           </div>
         </form>
         <section class="attraction">
-          <div id="period-tags" class="tags period-tags"></div>
+          <div class="attraction__handler">
+            <div id="period-tags" class="tags period-tags"></div>
+            <div class="toggle">
+              <i class="fa-solid fa-list-ul"></i>
+              <div class="button" id="button-10">
+                <input
+                  id="map-toggle"
+                  name="sliderView"
+                  type="checkbox"
+                  class="checkbox"
+                />
+                <div class="knobs">
+                  <span>清單</span>
+                </div>
+              </div>
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+          </div>
+
           <ul id="card-container" class="attraction__inner"></ul>
           <div class="attraction__empty">
             <p>請選擇類別或年代</p>
           </div>
         </section>
+      </div>
+      <div id="map">
+        <div id="map-sidebar">
+          <div class="sidebar-header">
+            <img id="sidebar-img" src="../img/card_1.jpg" alt="" />
+            <div class="sidebar-title">
+              <h4 id="sidebar-title-it"></h4>
+              <h3 id="sidebar-title-zh"></h3>
+            </div>
+          </div>
+          <div class="sidebar-info">
+            <div
+              id="tabs-container"
+              class="tabs"
+              role="tablist"
+              aria-label="Information Tabs"
+            >
+              <h3
+                id="tab-opentime"
+                class="tab active"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-opentime"
+                tabindex="0"
+              >
+                開放時間
+              </h3>
+              <h3
+                id="tab-tickets"
+                class="tab"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-ticket"
+                tabindex="0"
+              >
+                門票售價
+              </h3>
+            </div>
+            <div>
+              <div
+                id="panel-opentime"
+                class="tab-panel active"
+                role="tabpanel"
+                tabindex=""
+                aria-labelledby="tab-opentime"
+              ></div>
+              <div
+                id="panel-ticket"
+                class="tab-panel"
+                role="tabpanel"
+                tabindex=""
+                aria-labelledby="tab-tickets"
+              ></div>
+            </div>
+          </div>
+          <div class="sidebar-btn btn-container">
+            <a
+              id="sidebar-page-link"
+              target="_blank"
+              href="#"
+              class="btn btn-link"
+              ><span class="material-symbols-outlined"> arrow_outward </span
+              >景點頁面</a
+            >
+            <a
+              id="sidebar-map-link"
+              target="_blank"
+              href="#"
+              class="btn btn-link"
+              ><span class="material-symbols-outlined"> near_me </span>Google
+              Map</a
+            >
+          </div>
+        </div>
       </div>
     </main>
 
@@ -176,6 +289,28 @@
               item.classList.remove("open");
             }
           }
+        }
+      });
+
+      // tabs
+      document.querySelector("#map-sidebar").addEventListener("click", (e) => {
+        const target = e.target;
+        if (target.classList.contains("tab")) {
+          const tabs = target.parentElement.children;
+          for (let tab of tabs) {
+            tab.classList.remove("active");
+            tab.setAttribute("aria-selected", "false");
+          }
+          target.classList.add("active");
+          target.setAttribute("aria-selected", "true");
+
+          const panelId = target.getAttribute("aria-controls");
+          const currentPanel = document.querySelector(`#${panelId}`);
+          const panels = currentPanel.parentElement.children;
+          for (let panel of panels) {
+            panel.classList.remove("active");
+          }
+          currentPanel.classList.add("active");
         }
       });
     </script>
