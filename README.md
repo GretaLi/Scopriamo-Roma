@@ -12,6 +12,12 @@ Live: https://gretali.github.io/Scopriamo-Roma/pages/index.html
 
 Repo: https://github.com/GretaLi/Scopriamo-Roma
 
+```
+**專案資料庫部屬至 Render 需15至30秒伺服器啟動**
+測試帳號: testA@gmail.com
+測試密碼: test
+```
+
 ## 首頁截圖
 
 ![](./screenshot.jpg)
